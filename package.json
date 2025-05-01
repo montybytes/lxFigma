@@ -1,0 +1,39 @@
+{
+  "name": "lxFigma",
+  "private": true,
+  "author": "montybytez",
+  "version": "0.0.1",
+  "main": "main.cjs",
+  "description": "a linux dektop wrapper for Figma Web Editor",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^35.2.1",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.lxapps.figmadesktop",
+    "productName": "lxFigma",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "public/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/icon.png"
+    }
+  }
+}
