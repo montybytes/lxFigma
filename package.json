@@ -1,12 +1,12 @@
 {
-  "name": "lxFigma",
+  "name": "lxfigma",
   "private": true,
-  "author": "montybytez",
+  "author": "montybytes",
   "version": "0.0.1",
-  "main": "main.cjs",
+  "main": "src/main.cjs",
   "description": "a linux dektop wrapper for Figma Web Editor",
   "scripts": {
-    "start": "electron .",
+    "start": "electron --no-sandbox .",
     "build": "electron-builder"
   },
   "devDependencies": {
@@ -20,7 +20,7 @@
       "output": "dist"
     },
     "files": [
-      "main.cjs",
+      "src/**/*",
       "public/**/*",
       "package.json"
     ],

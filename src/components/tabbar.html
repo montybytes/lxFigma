@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TabBarView</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      #tab-bar {
+        height: 36px;
+        background: #222;
+        color: white;
+        display: flex;
+      }
+
+      #tab-container {
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      #tab-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab {
+        cursor: pointer;
+        min-width: 120px;
+        max-width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        padding: 8px;
+      }
+
+      .tab:hover {
+        background-color: grey;
+      }
+
+      .active {
+        background-color: grey;
+      }
+
+      #new-tab,
+      #menu {
+        width: 24px;
+        height: 24px;
+        aspect-ratio: 1;
+        display: block;
+        background: none;
+        border: none;
+        padding: 2px;
+        margin: 0;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+        margin: auto 8px;
+        border-radius: 2px;
+        border: 1px transparent solid;
+      }
+
+      #new-tab:hover,
+      #menu:hover {
+        border: 1px steelblue solid;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="tab-bar">
+      <button id="new-tab">
+        <img src="../assets/list-add.svg" alt="Open" />
+      </button>
+
+      <div id="tab-container">
+        <div class="tab active">Example</div>
+        <div class="tab">GitHub</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+        <div class="tab">Wikipedia</div>
+      </div>
+
+      <button id="menu">
+        <img src="../assets/application-menu.svg" alt="Open" />
+      </button>
+    </div>
+
+    <script>
+      const scrollContainer = document.getElementById("tab-container");
+
+      scrollContainer.addEventListener("wheel", (e) => {
+        e.preventDefault();
+
+        const BASE_SCROLL = 120;
+        const SPEED_MULTIPLIER = 2;
+
+        const direction = Math.sign(e.deltaY);
+        const speed = Math.min(Math.abs(e.deltaY), 300);
+        const scrollAmount = BASE_SCROLL + speed * SPEED_MULTIPLIER;
+
+        scrollContainer.scrollBy({
+          left: direction * scrollAmount,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </body>
+</html>
